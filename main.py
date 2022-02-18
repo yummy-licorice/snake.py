@@ -1,8 +1,10 @@
 import turtle
+import random
 
 WIDTH = 500
 HEIGHT = 500
 DELAY = 100  # Milliseconds
+FOOD_SIZE = 20
 
 offsets = {
     "up": (0, 20),
@@ -36,22 +38,51 @@ def go_left():
         snake_direction = "left"
 
 
-def move_snake():
+def game_loop():
     stamper.clearstamps()
 
     new_head = snake[-1].copy()
     new_head[0] += offsets[snake_direction][0]
     new_head[1] += offsets[snake_direction][1]
 
-    snake.append(new_head)
-    snake.pop(0)
+    # Collisions
+    if new_head in snake or new_head[0] < - WIDTH / 2 or new_head[0] > WIDTH / 2 \
+            or new_head[1] < - HEIGHT / 2 or new_head[1] > HEIGHT / 2:
+        turtle.bye()
+    else:
+        snake.append(new_head)
 
-    for segment in snake:
-        stamper.goto(segment[0], segment[1])
-        stamper.stamp()
+        if not food_collisions():
+            snake.pop(0)  # Keep the length of the snake if no food collisions
 
-    screen.update()
-    turtle.ontimer(move_snake, DELAY)
+        for segment in snake:
+            stamper.goto(segment[0], segment[1])
+            stamper.stamp()
+
+        screen.update()
+        turtle.ontimer(game_loop, DELAY)
+
+
+def food_collisions():
+    global food_pos
+    if get_distance(snake[-1], food_pos) < 20:
+        food_pos = get_random_food_pos()
+        food.goto(food_pos)
+        return True
+    return False
+
+
+def get_random_food_pos():
+    x = random.randint(- WIDTH / 2 + FOOD_SIZE, WIDTH / 2 - FOOD_SIZE)
+    y = random.randint(- HEIGHT / 2 + FOOD_SIZE, HEIGHT / 2 - FOOD_SIZE)
+    return (x, y)
+
+
+def get_distance(pos1, pos2):
+    x1, y1 = pos1
+    x2, y2 = pos2
+    distance = ((y2 - y1) ** 2 + (x2 - x1) ** 2) ** 0.5
+    return distance
 
 
 screen = turtle.Screen()
@@ -79,6 +110,15 @@ for segment in snake:
     stamper.goto(segment[0], segment[1])
     stamper.stamp()
 
-move_snake()
+# Food
+food = turtle.Turtle()
+food.shape("circle")
+food.shapesize(FOOD_SIZE / 20)
+food.penup()
+food_pos = get_random_food_pos()
+food.goto(food_pos)
+food.color("#fff")
+
+game_loop()
 
 turtle.done()

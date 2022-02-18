@@ -1,5 +1,5 @@
-import turtle
 import random
+import turtle
 
 WIDTH = 500
 HEIGHT = 500
@@ -14,28 +14,27 @@ offsets = {
 }
 
 
-def go_up():
+def bind_direction_keys():
+    screen.onkey(lambda: set_snake_direction("up"), "Up")
+    screen.onkey(lambda: set_snake_direction("down"), "Down")
+    screen.onkey(lambda: set_snake_direction("left"), "Left")
+    screen.onkey(lambda: set_snake_direction("right"), "Right")
+
+
+def set_snake_direction(direction):
     global snake_direction
-    if snake_direction != "down":
-        snake_direction = "up"
-
-
-def go_right():
-    global snake_direction
-    if snake_direction != "left":
-        snake_direction = "right"
-
-
-def go_down():
-    global snake_direction
-    if snake_direction != "up":
-        snake_direction = "down"
-
-
-def go_left():
-    global snake_direction
-    if snake_direction != "right":
-        snake_direction = "left"
+    if direction == "up":
+        if snake_direction != "down":  # Prevents self collisions
+            snake_direction = "up"
+    if direction == "down":
+        if snake_direction != "up":  # Prevents self collisions
+            snake_direction = "down"
+    if direction == "right":
+        if snake_direction != "left":  # Prevents self collisions
+            snake_direction = "right"
+    if direction == "left":
+        if snake_direction != "right":  # Prevents self collisions
+            snake_direction = "left"
 
 
 def game_loop():
@@ -105,10 +104,7 @@ screen.tracer(0)
 
 # Event Handlers
 screen.listen()
-screen.onkey(go_up, "Up")
-screen.onkey(go_down, "Down")
-screen.onkey(go_left, "Left")
-screen.onkey(go_right, "Right")
+bind_direction_keys()
 
 stamper = turtle.Turtle()
 stamper.shape("square")

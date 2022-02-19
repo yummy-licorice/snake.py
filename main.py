@@ -2,11 +2,11 @@ import random
 import turtle
 import time
 
-
 WIDTH = 500
 HEIGHT = 500
 DELAY = 100  # Milliseconds
 FOOD_SIZE = 20
+DEATHS = 0
 
 offsets = {
     "up": (0, 20),
@@ -21,6 +21,11 @@ def bind_direction_keys():
     screen.onkey(lambda: set_snake_direction("down"), "Down")
     screen.onkey(lambda: set_snake_direction("left"), "Left")
     screen.onkey(lambda: set_snake_direction("right"), "Right")
+    screen.onkey(lambda: quit(), "q")
+
+
+def quit():
+    turtle.bye()
 
 
 def set_snake_direction(direction):
@@ -40,6 +45,7 @@ def set_snake_direction(direction):
 
 
 def game_loop():
+    global DEATHS
     stamper.clearstamps()
 
     new_head = snake[-1].copy()
@@ -49,7 +55,8 @@ def game_loop():
     # Collisions
     if new_head in snake or new_head[0] < - WIDTH / 2 or new_head[0] > WIDTH / 2 \
             or new_head[1] < - HEIGHT / 2 or new_head[1] > HEIGHT / 2:
-        print(f"You Died!")
+        DEATHS += 1
+        print(f"You died {DEATHS} times!")
         text.write('Game Over!', font=("Arial", 30, "bold"), align='center')
         time.sleep(2)
         text.clear()
@@ -64,7 +71,7 @@ def game_loop():
             stamper.goto(segment[0], segment[1])
             stamper.stamp()
 
-        screen.title(f"Snake | Score: {score}")
+        screen.title(f"Snake | Score: {score} | Deaths: {DEATHS}")
         screen.update()
         turtle.ontimer(game_loop, DELAY)
 

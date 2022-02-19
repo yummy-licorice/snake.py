@@ -2,7 +2,7 @@
 name = "snake.py"
 version = "0.1.0"
 description = ""
-authors = ["Infinity <Infinitybeond1@protonmail.com>"]
+authors = ["Infinitybeond1 <Infinitybeond1@protonmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"

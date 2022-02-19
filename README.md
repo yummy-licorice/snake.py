@@ -2,8 +2,10 @@
 
 ## A snake game created with python's turtle graphics
 
-[![Issues][https://img.shields.io/github/issues/Infinitybeond1/snake.py]
-[![Forks][https://img.shields.io/github/forks/Infinitybeond1/snake.py]
+![Issues](https://img.shields.io/github/issues/Infinitybeond1/snake.py)
+![Forks](https://img.shields.io/github/forks/Infinitybeond1/snake.py)
+![Stars](https://img.shields.io/github/stars/Infinitybeond1/snake.py)
+![Lisence](https://img.shields.io/github/license/Infinitybeond1/snake.py)
 
 ### main.py
 

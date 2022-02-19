@@ -1,5 +1,6 @@
 import random
 import turtle
+import time
 
 WIDTH = 500
 HEIGHT = 500
@@ -47,6 +48,10 @@ def game_loop():
     # Collisions
     if new_head in snake or new_head[0] < - WIDTH / 2 or new_head[0] > WIDTH / 2 \
             or new_head[1] < - HEIGHT / 2 or new_head[1] > HEIGHT / 2:
+        print("You Died!")
+        text.write('Game Over!', font=("Arial", 30, "bold"), align='center')
+        time.sleep(2)
+        text.clear()
         reset()
     else:
         snake.append(new_head)
@@ -116,7 +121,13 @@ food = turtle.Turtle()
 food.shape("circle")
 food.shapesize(FOOD_SIZE / 20)
 food.penup()
-food.color("red")
+food.color("green")
+
+text = turtle.Turtle()
+text.penup()
+text.hideturtle()
+text.goto(250 / 20, 250 / 20)
+text.color("red")
 
 reset()
 

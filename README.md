@@ -1,7 +1,9 @@
 # Snake.py
 
 ## A snake game created with python's turtle graphics
-https://img.shields.io/badge/PRs-%20Welcome-brightgreen
+
+[![Issues](https://img.shields.io/github/issues/Infinitybeond1/snake.py)
+[![Forks](https://img.shields.io/github/forks/Infinitybeond1/snake.py)
 
 ### main.py
 

@@ -2,6 +2,7 @@ import random
 import turtle
 import time
 
+
 WIDTH = 500
 HEIGHT = 500
 DELAY = 100  # Milliseconds
@@ -48,7 +49,7 @@ def game_loop():
     # Collisions
     if new_head in snake or new_head[0] < - WIDTH / 2 or new_head[0] > WIDTH / 2 \
             or new_head[1] < - HEIGHT / 2 or new_head[1] > HEIGHT / 2:
-        print("You Died!")
+        print(f"You Died!")
         text.write('Game Over!', font=("Arial", 30, "bold"), align='center')
         time.sleep(2)
         text.clear()
@@ -104,7 +105,7 @@ def reset():
 screen = turtle.Screen()
 screen.setup(WIDTH, HEIGHT)
 screen.title("Snake")
-screen.bgcolor("#000")
+screen.bgcolor("#2e3440")
 screen.tracer(0)
 
 # Event Handlers
@@ -114,20 +115,20 @@ bind_direction_keys()
 stamper = turtle.Turtle()
 stamper.shape("square")
 stamper.penup()
-stamper.color("#fff")
+stamper.color("#88c0d0")
 
 # Food
 food = turtle.Turtle()
 food.shape("circle")
 food.shapesize(FOOD_SIZE / 20)
 food.penup()
-food.color("green")
+food.color("#a3be8c")
 
 text = turtle.Turtle()
 text.penup()
 text.hideturtle()
 text.goto(250 / 20, 250 / 20)
-text.color("red")
+text.color("#bf616a")
 
 reset()
 

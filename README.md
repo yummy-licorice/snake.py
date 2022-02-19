@@ -7,7 +7,7 @@
 ![Stars](https://img.shields.io/github/stars/Infinitybeond1/snake.py)
 ![Lisence](https://img.shields.io/github/license/Infinitybeond1/snake.py)
 
-### main.py
+## main.py
 
 #### The main file of the project, includes the projects source code.
 

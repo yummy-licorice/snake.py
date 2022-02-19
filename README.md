@@ -2,6 +2,7 @@
 
 ## A snake game created with python's turtle graphics
 
+[![Run on Repl.it](https://repl.it/badge/@aksharvadaria9/snakepy)](https://repl.it/@aksharvadaria9/snakepy)
 ![Issues](https://img.shields.io/github/issues/Infinitybeond1/snake.py)
 ![Forks](https://img.shields.io/github/forks/Infinitybeond1/snake.py)
 ![Stars](https://img.shields.io/github/stars/Infinitybeond1/snake.py)

@@ -1,6 +1,7 @@
 # Snake.py
 
 ## A snake game created with python's turtle graphics
+https://img.shields.io/badge/PRs-%20Welcome-brightgreen
 
 ### main.py
 
